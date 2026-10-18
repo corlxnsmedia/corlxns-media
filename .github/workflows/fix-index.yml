@@ -21,6 +21,9 @@ jobs:
         run: gh release download temp-19h-20261018 --repo ${{ github.repository }} --pattern "deploy-github-index.html" --dir /tmp/asset
       - name: Verifier taille et sha256
         run: |
+          ls -l /tmp/asset/deploy-github-index.html
+          stat -c%s /tmp/asset/deploy-github-index.html
+          sha256sum /tmp/asset/deploy-github-index.html
           test $(stat -c%s /tmp/asset/deploy-github-index.html) -eq 29467643
           echo "f140de494c01218ad1a3b8d7142a43f48ea6a83f2c8cff72bc799b71636b59f0  /tmp/asset/deploy-github-index.html" | sha256sum -c -
       - name: Installer index et pousser
