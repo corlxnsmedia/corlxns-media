@@ -1,0 +1,17 @@
+name: Fix index 11h
+"on":
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/fix-index.yml
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git show bcf84abd87204898ef78786067a3eb3e81689042:deploy-github-index.html > index.html
+      - run: git config user.name "corlxnsmedia" && git config user.email "173564007+corlxnsmedia@users.noreply.github.com" && git add index.html && git commit -m "Mizajou 18 octobre 2026 11h" && git push
