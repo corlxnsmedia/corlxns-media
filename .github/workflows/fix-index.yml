@@ -1,0 +1,28 @@
+name: Fix index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download release files and update site
+        run: |
+          curl -fL -o index.html "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/deploy-github-index.html"
+          curl -fL -o manifest.webmanifest "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/manifest.webmanifest"
+          curl -fL -o sw.js "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/sw.js"
+          curl -fL -o icon-192.png "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/icon-192.png"
+          curl -fL -o icon-512.png "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/icon-512.png"
+          curl -fL -o icon-maskable-512.png "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/icon-maskable-512.png"
+          curl -fL -o apple-touch-icon.png "https://github.com/corlxnsmedia/corlxns-media/releases/download/temp-16h-20261018/apple-touch-icon.png"
+          test $(stat -c%s index.html) -gt 25000000
+          grep -q "Katie Zacharia" index.html
+          grep -q "incendie Norte" index.html
+          grep -q "Cleveland renverse Baltimore" index.html
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Mizajou 18 octobre 2026 16h" || exit 0
+          git push
