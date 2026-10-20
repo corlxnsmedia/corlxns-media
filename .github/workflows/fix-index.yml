@@ -1,0 +1,30 @@
+name: Fix index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download release asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p dl
+          gh release download temp-deploy-20261020-00h56 --dir dl
+          mv dl/index.html index.html
+          mv dl/manifest.webmanifest manifest.webmanifest
+          mv dl/sw.js sw.js
+          mv dl/icon-192.png icon-192.png
+          mv dl/icon-512.png icon-512.png
+          mv dl/icon-maskable-512.png icon-maskable-512.png
+          mv dl/apple-touch-icon.png apple-touch-icon.png
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html manifest.webmanifest sw.js icon-192.png icon-512.png icon-maskable-512.png apple-touch-icon.png
+          git diff --cached --quiet || git commit -m "Mizajou 20 octobre 2026 00h56"
+          git push
