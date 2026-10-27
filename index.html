@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>/*CM-V2-THEME*/(function(){try{var t=localStorage.getItem('cm-theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <style>
   :root{
     color-scheme:light dark;
@@ -181,6 +182,83 @@
   @media (max-width:900px){.today-card{grid-template-columns:112px 1fr auto}.today-image{width:112px}nav{display:none;position:absolute;top:75px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 24px;flex-direction:column;align-items:flex-start;gap:2px}nav.open{display:flex}.icon-btn{display:flex}.hero .wrap{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.feature-card{grid-row:auto;grid-column:1/-1;min-height:330px}.category-story{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:24px}}
   @media (max-width:700px){.today-news-head,.category-today-head{align-items:flex-start;flex-direction:column;gap:10px}.today-news-head p,.category-today-head p{text-align:left}.today-news-grid,.category-today-grid{grid-template-columns:1fr}.category-today-grid .today-card:only-child{grid-column:auto;max-width:none}}
   @media (max-width:600px){.wrap{padding:0 16px}.ticker .wrap{padding-right:0}.logo{font-size:19px;gap:6px}.logo .thin{font-size:12px}.logo img{width:31px;height:31px}.subscribe{display:none}header{padding:14px 0}.hero{padding:38px 0 42px}.hero .wrap{gap:34px}h1.headline{font-size:38px}.hero-media{min-height:275px}.today-news{padding:38px 0 42px}.today-card{padding:21px 0}.today-card h3{font-size:19px}.today-card{grid-template-columns:1fr;grid-template-areas:"image" "tag" "title" "summary" "source" "link"}.today-image{width:100%;aspect-ratio:16/9;margin-bottom:16px}.today-link{justify-self:start;margin-top:11px}.trending .wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}.trending .label{grid-column:1/-1}.trending-item{border-right:0;padding-right:0;font-size:12px}.grid3{grid-template-columns:1fr}.feature-card{grid-column:auto;min-height:310px;order:-1}.section-title{align-items:flex-end}.newsletter form{flex-direction:column}.newsletter button{width:100%}.about-copy{columns:1}.category-head{align-items:flex-start;flex-direction:column}.category-copy h2{font-size:29px}.article-page{padding-top:40px}.article-body{font-size:18px}.reader-bar .wrap{height:58px}}
+
+  /* ===== CM-V2 : ELARGISSEMENT 2026-10-27 ===== */
+  :root{--gold-grad:linear-gradient(120deg,#c9a34d,#e7c877 55%,#c9a34d);--shadow:0 14px 34px rgba(20,20,20,.10);--radius:16px}
+  html[data-theme="dark"]{--ink:#f3efe6;--paper:#141513;--paper-2:#1d1e1b;--surface:#1a1b19;--line:#383934;--muted:#aaa79f;--body:#d6d2c9;--accent:#d5ad54;--accent-soft:#4d4126;--night:#090a09;--night-text:#f3efe6;--thumb:#262721;--shape:#393a32;--overlay:rgba(0,0,0,.72);--shadow:0 14px 34px rgba(0,0,0,.45)}
+  html[data-theme="light"]{--ink:#141414;--paper:#fbfaf7;--paper-2:#f2f0ea;--surface:#ffffff;--line:#dedad0;--muted:#6b6a63;--body:#333230;--accent:#c9a34d;--accent-soft:#f1e3bd;--night:#141414;--night-text:#fbfaf7;--thumb:#e9e6dc;--shape:#d7d3c6;--overlay:rgba(20,20,20,.58);--shadow:0 14px 34px rgba(20,20,20,.10)}
+  header{position:sticky;top:0;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+  .ticker-track{animation-duration:70s}
+  .hero{background:radial-gradient(720px 320px at 85% -60px,var(--accent-soft),transparent 65%),linear-gradient(180deg,var(--paper),var(--paper))}
+  .hero .headline{font-size:clamp(34px,4.6vw,54px);letter-spacing:-.01em}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--night);color:var(--night-text);padding:6px 12px;border-radius:999px;font-size:11px;letter-spacing:.14em}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:#e5484d;animation:cmPulse 1.6s infinite}
+  @keyframes cmPulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .today-card,.card{border-radius:var(--radius);transition:transform .18s ease,box-shadow .18s ease}
+  .today-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .today-card .today-image{border-radius:12px;overflow:hidden}
+  .today-card .today-image img,.today-card .today-image svg{transition:transform .35s ease}
+  .today-card:hover .today-image img{transform:scale(1.045)}
+  .card:hover h3,.today-card:hover h3{color:var(--accent)}
+  .tag{background:var(--accent-soft);padding:3px 9px;border-radius:999px;width:max-content}
+  .cm-util{background:var(--night);color:var(--night-text);font-size:12.5px}
+  .cm-util .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+  .cm-util b{font-family:'Fraunces',serif;font-weight:600;letter-spacing:.02em}
+  .cm-util .cm-dot{opacity:.45}
+  #cmWeather{font-weight:600;color:var(--accent);white-space:nowrap}
+  .cm-util-actions{margin-left:auto;display:flex;gap:8px}
+  .cm-u-btn{border:1px solid rgba(255,255,255,.28);background:transparent;color:inherit;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:12px;font-weight:600}
+  .cm-u-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .cm-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+  .cm-pill{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s}
+  .cm-pill:hover{border-color:var(--accent)}
+  .cm-pill.active{background:var(--night);color:var(--night-text);border-color:var(--night)}
+  .cm-empty{border:1px dashed var(--line);border-radius:var(--radius);padding:26px;text-align:center;color:var(--muted);font-size:14px}
+  .cm-services{background:var(--paper-2);border-bottom:1px solid var(--line);padding:40px 0}
+  .cm-services h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin-bottom:6px}
+  .cm-services .cm-sub{color:var(--muted);font-size:13.5px;margin-bottom:20px}
+  .cm-svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .cm-svc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:transform .18s,box-shadow .18s}
+  .cm-svc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .cm-svc .cm-ico{font-size:22px}
+  .cm-svc h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin:8px 0 4px}
+  .cm-svc p{font-size:13px;color:var(--muted);line-height:1.5}
+  .cm-svc .cm-big{font-family:'Fraunces',serif;font-size:26px;color:var(--ink)}
+  .cm-svc button{margin-top:10px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer}
+  .cm-svc button:hover{border-color:var(--accent);color:var(--accent)}
+  .cm-fav-sec{padding:44px 0;border-bottom:1px solid var(--line)}
+  .cm-fav-sec h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin-bottom:6px}
+  .cm-fav-sec .cm-sub{color:var(--muted);font-size:13.5px;margin-bottom:18px}
+  .cm-fav-list{display:grid;gap:10px}
+  .cm-fav-item{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:left;width:100%;color:inherit}
+  .cm-fav-item:hover{border-color:var(--accent)}
+  .cm-fav-item .t{flex:1;font-weight:600;font-size:14px;line-height:1.4}
+  .cm-fav-item .x{border:0;background:transparent;font-size:17px;cursor:pointer;color:var(--muted);padding:4px 8px}
+  .cm-overlay{position:fixed;inset:0;background:var(--overlay);z-index:80;display:none;align-items:flex-start;justify-content:center;padding:9vh 16px 16px}
+  .cm-overlay.open{display:flex}
+  .cm-search-box{background:var(--paper);border-radius:18px;max-width:680px;width:100%;max-height:76vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
+  .cm-search-box header{position:static;background:var(--paper);padding:14px;border-bottom:1px solid var(--line);display:flex;gap:10px;box-shadow:none}
+  .cm-search-box input{flex:1;border:1px solid var(--line);border-radius:999px;padding:11px 16px;background:var(--surface);color:var(--ink);font-size:15px}
+  .cm-search-box .cm-close{border:1px solid var(--line);background:transparent;border-radius:50%;width:42px;height:42px;font-size:19px;cursor:pointer;flex:none}
+  #cmResults{overflow:auto;padding:10px}
+  .cm-result{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:12px 8px;cursor:pointer;color:inherit}
+  .cm-result:hover{background:var(--paper-2)}
+  .cm-result .r-tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--accent)}
+  .cm-result .r-title{font-family:'Fraunces',serif;font-size:16.5px;font-weight:600;line-height:1.35;margin-top:2px}
+  .cm-result .r-sum{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .cm-no{padding:22px;text-align:center;color:var(--muted);font-size:14px}
+  #cmProgress{position:fixed;top:0;left:0;height:3px;background:var(--gold-grad);width:0;z-index:90;transition:width .08s linear}
+  #cmTop{position:fixed;right:18px;bottom:86px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--night);color:var(--night-text);font-size:19px;cursor:pointer;z-index:70;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:var(--shadow)}
+  #cmTop.show{opacity:1;pointer-events:auto}
+  .cm-reader-tools{display:flex;gap:8px;align-items:center}
+  .cm-reader-tools button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:600;cursor:pointer}
+  .cm-reader-tools button:hover{border-color:var(--accent);color:var(--accent)}
+  .cm-reader-tools button.on{background:var(--accent-soft);border-color:var(--accent)}
+  .cm-hdr-btn{border:1px solid var(--line);background:transparent;border-radius:50%;width:38px;height:38px;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+  .cm-hdr-btn:hover{border-color:var(--accent)}
+  @media (max-width:900px){.cm-svc-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.cm-svc-grid{grid-template-columns:1fr}.cm-util .wrap{gap:10px}.cm-util-actions{margin-left:0}}
+  /* ===== FIN CM-V2 ===== */
 </style>
 </head>
 <body>
@@ -203,9 +281,15 @@
       <nav id="mainNav" aria-label="Rubriques">
         <button data-category="monde">Monde</button><button data-category="politique">Politique</button><button data-category="economie">Économie</button><button data-category="technologie">Technologie</button><button data-category="science">Science</button><button data-category="culture">Culture</button><button data-category="sport">Sport</button><button data-category="videos">Vidéos</button><button data-category="archives">Archives</button>
       </nav>
-      <div class="header-actions"><button class="subscribe" id="subscribeTop">S’abonner ↗</button><button class="icon-btn" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button></div>
+      <div class="header-actions"><button class="subscribe" id="subscribeTop">S’abonner ↗</button><button class="cm-hdr-btn" id="cmSearchBtn" aria-label="Rechercher un article" title="Rechercher">🔍</button><button class="cm-hdr-btn" id="cmThemeBtn" aria-label="Basculer le mode sombre" title="Mode sombre / clair">🌙</button><button class="icon-btn" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button></div>
     </div>
   </header>
+  <!-- CM-V2 : barre utilitaire -->
+  <div class="cm-util" aria-label="Informations pratiques"><div class="wrap">
+    <span>📍 <b>Montréal</b></span><span class="cm-dot">•</span><span id="cmClock">—</span><span class="cm-dot">•</span><span id="cmWeather">Météo…</span>
+    <span class="cm-util-actions"><button class="cm-u-btn" id="cmFavJump">⭐ Mes favoris (<span id="cmFavCount">0</span>)</button><button class="cm-u-btn" id="cmSearchBtn2">🔍 Rechercher</button></span>
+  </div></div>
+
 
   <main id="homeView">
     <section class="hero">
@@ -229,12 +313,24 @@
     <section class="today-news" aria-labelledby="todayNewsTitle">
       <div class="wrap">
         <div class="today-news-head"><h2 id="todayNewsTitle">À la une aujourd’hui — mardi 27 octobre 2026, mise à jour à 10 h 00</h2><p>Sélection de la rédaction — mise à jour à 10 h 00 — sources citées</p></div>
-        <div class="today-news-grid" id="homeDailyGrid"></div>
+        <div class="cm-filters" id="cmFilters" role="group" aria-label="Filtrer les actualités du jour par rubrique"><button class="cm-pill active" data-filter="all">Tout</button><button class="cm-pill" data-filter="Monde">Monde</button><button class="cm-pill" data-filter="Politique">Politique</button><button class="cm-pill" data-filter="Économie">Économie</button><button class="cm-pill" data-filter="Technologie">Technologie</button><button class="cm-pill" data-filter="Science">Science</button><button class="cm-pill" data-filter="Culture">Culture</button><button class="cm-pill" data-filter="Sport">Sport</button><button class="cm-pill" data-filter="Vidéos">Vidéos</button></div><div class="today-news-grid" id="homeDailyGrid"></div>
       </div>
     </section>
 
     <div class="trending"><div class="wrap"><span class="label">Tendances</span><span class="trending-item">Prévisions économiques pour 2027</span><span class="trending-item">Régulation de l’intelligence artificielle</span><span class="trending-item">Innovation dans le dessalement</span><span class="trending-item">Diasporas et création culturelle</span></div></div>
 
+    
+    <!-- CM-V2 : services et nouveautés -->
+    <section class="cm-services" aria-labelledby="cmSvcTitle"><div class="wrap">
+      <h2 id="cmSvcTitle">Vos services Corlxns</h2>
+      <p class="cm-sub">Nouveautés du site : l’essentiel pratique, en un coup d’œil, depuis Montréal.</p>
+      <div class="cm-svc-grid">
+        <div class="cm-svc"><span class="cm-ico">🌦️</span><h3>Météo Montréal</h3><p class="cm-big" id="cmSvcTemp">—</p><p id="cmSvcWeatherDetail">Chargement de la météo en direct…</p></div>
+        <div class="cm-svc"><span class="cm-ico">🕐</span><h3>Heure locale</h3><p class="cm-big" id="cmSvcClock">—</p><p>Heure de Montréal (Québec), mise à jour en continu.</p></div>
+        <div class="cm-svc"><span class="cm-ico">📰</span><h3>Édition du jour</h3><p class="cm-big"><span id="cmSvcCount">—</span> articles</p><p>Plus les archives complètes des éditions précédentes, toujours consultables.</p><button id="cmSvcArchives">Voir les archives</button></div>
+        <div class="cm-svc"><span class="cm-ico">⭐</span><h3>Mes favoris</h3><p class="cm-big"><span id="cmSvcFavCount">0</span> enregistré(s)</p><p>Gardez vos articles préférés sur cet appareil et retrouvez-les en un clic.</p><button id="cmSvcFavBtn">Ouvrir mes favoris</button></div>
+      </div>
+    </div></section>
     <section class="grid-section" id="actualites"><div class="wrap">
       <div class="section-title">Actualités récentes <small>Les premiers articles Corlxns Media</small></div>
       <div class="grid3">
@@ -247,6 +343,13 @@
       </div>
     </section>
 
+    
+    <!-- CM-V2 : favoris -->
+    <section class="cm-fav-sec" id="cmFavoris"><div class="wrap">
+      <h2>⭐ Mes favoris</h2>
+      <p class="cm-sub">Vos articles enregistrés sur cet appareil. Touchez un article pour le relire, ✕ pour le retirer.</p>
+      <div class="cm-fav-list" id="cmFavList"></div>
+    </div></section>
     <section class="newsletter" id="newsletter"><div class="wrap"><h2>Recevez l'essentiel du monde chaque jour</h2><p>Une sélection quotidienne des faits qui comptent, sans bruit.</p><form id="newsletterForm" novalidate><input id="emailInput" type="email" autocomplete="email" required aria-label="Votre adresse e-mail" aria-describedby="formNote" placeholder="Votre adresse e-mail"><button type="submit">S'abonner</button></form><p class="form-note" id="formNote" role="status" aria-live="polite"></p><p class="newsletter-success hidden" id="newsletterSuccess" role="status" aria-live="polite">Merci ! Vous êtes bien inscrit(e) à l'infolettre Corlxns Media.</p></div></section>
 
     <section class="about" id="about"><div class="wrap about-grid"><h2>À propos de<br>Corlxns Media</h2><div class="about-copy"><p>Corlxns Media est un média international dont la mission est de connecter les faits, les lieux et les personnes à travers un monde de plus en plus interdépendant. Notre nom — Corlxns, pour « Connections » — reflète cette conviction : aucune actualité ne se comprend pleinement isolée de son contexte mondial.</p><p>Nous couvrons l'actualité internationale, la politique, l'économie, la technologie, la science, la culture et le sport, avec un engagement constant envers la rigueur, le contexte et la clarté. Notre format combine articles de fond, vidéos courtes et podcasts, pensés pour un lectorat exigeant et mobile.</p><p>Corlxns Media ne cherche pas à multiplier les nouvelles instantanées, mais à donner du sens à celles qui comptent vraiment. Chaque jour, notre rédaction s'efforce de relier les fils d'un monde en perpétuel mouvement — pour que nos lecteurs comprennent non seulement ce qui se passe, mais pourquoi cela compte.</p></div></div></section>
@@ -258,6 +361,17 @@
 
   <footer><div class="wrap"><div class="footer-social" aria-label="Réseaux sociaux"><span class="footer-social-label">Suivez-nous</span><a class="instagram-link" href="https://www.instagram.com/its__jeffrey__/" target="_blank" rel="noopener noreferrer" aria-label="Suivre @its__jeffrey__ sur Instagram (nouvel onglet)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span>@its__jeffrey__</span></a><a class="instagram-link" href="https://x.com/corlxns" target="_blank" rel="noopener noreferrer" aria-label="Suivre @corlxns sur X (nouvel onglet)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.5 22H3.4l7.3-8.3L1 2h6.5l4.4 5.9L18.9 2zm-1.1 18h1.7L7.1 3.9H5.3L17.8 20z"/></svg><span>@corlxns</span></a></div><div>© 2026 Corlxns Media — L'information mondiale, au cœur de l'action.</div></div></footer>
 
+  
+  <!-- CM-V2 : recherche -->
+  <div class="cm-overlay" id="cmSearchOverlay" role="dialog" aria-modal="true" aria-labelledby="cmSearchTitle">
+    <div class="cm-search-box">
+      <header><input id="cmSearchInput" type="search" placeholder="Rechercher dans tous les articles (aujourd’hui + archives)…" aria-label="Rechercher un article"><button class="cm-close" id="cmSearchClose" aria-label="Fermer la recherche">×</button></header>
+      <h2 id="cmSearchTitle" class="hidden">Recherche</h2>
+      <div id="cmResults"><p class="cm-no">Tapez un mot : un pays, un nom, un sujet…</p></div>
+    </div>
+  </div>
+  <div id="cmProgress" aria-hidden="true"></div>
+  <button id="cmTop" aria-label="Retour en haut de page" title="Haut de page">↑</button>
   <section class="reader" id="reader" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="readerTitle"><div class="reader-bar"><div class="wrap"><span class="reader-brand">CORLXNS <em>Media</em></span><button class="reader-close" id="readerClose" aria-label="Fermer l’article">×</button></div></div><article class="article-page"><span class="tag" id="readerTag"></span><h1 id="readerTitle"></h1><p class="article-deck hidden" id="readerDeck"></p><div class="byline-row"><span><b>La rédaction</b></span><span class="dot">•</span><span id="readerRead"></span><span class="dot hidden" id="readerDateDot">•</span><span class="hidden" id="readerDate">18 octobre 2026</span></div><figure class="article-media hidden" id="readerMedia"></figure><div class="article-body" id="readerBody"></div><p class="article-source hidden" id="readerSource"></p></article></section>
   <div class="toast" id="toast" role="status"></div>
 
@@ -362,6 +476,174 @@
 #cm-install button{background:#c9a34d;color:#141414;border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
 #cm-install .x{background:transparent;color:#fbfaf7;font-size:18px;padding:4px 8px}
 </style>
+
+<script>/*CM-V2-SCRIPT*/
+(function(){
+  "use strict";
+  function mmDark(){try{return window.matchMedia('(prefers-color-scheme: dark)').matches}catch(e){return false}}
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  function toast(msg){var t=$('#toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2400);}
+
+  /* --- Mode sombre / clair manuel --- */
+  var themeBtn=$('#cmThemeBtn');
+  function syncThemeIcon(){var d=document.documentElement.getAttribute('data-theme')==='dark'||(!document.documentElement.getAttribute('data-theme')&&mmDark());if(themeBtn)themeBtn.textContent=d?'☀️':'🌙';}
+  if(themeBtn){themeBtn.addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme');var dark=cur==='dark'||(!cur&&mmDark());var next=dark?'light':'dark';document.documentElement.setAttribute('data-theme',next);try{localStorage.setItem('cm-theme',next)}catch(e){}syncThemeIcon();toast(next==='dark'?'Mode sombre activé':'Mode clair activé');});syncThemeIcon();}
+
+  /* --- Horloge Montreal --- */
+  function tickClock(){try{var now=new Date();var dateStr=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'America/Toronto'});var timeStr=now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Toronto'});var c=$('#cmClock');if(c)c.textContent=dateStr.charAt(0).toUpperCase()+dateStr.slice(1)+' — '+timeStr;var sc=$('#cmSvcClock');if(sc)sc.textContent=timeStr;}catch(e){}}
+  tickClock();setInterval(tickClock,20000);
+
+  /* --- Meteo Montreal (Open-Meteo, sans cle) --- */
+  var WMO={0:'Ciel dégagé',1:'Plutôt dégagé',2:'Partiellement nuageux',3:'Couvert',45:'Brouillard',48:'Brouillard givrant',51:'Bruine légère',53:'Bruine',55:'Bruine forte',61:'Pluie légère',63:'Pluie',65:'Pluie forte',66:'Pluie verglaçante',67:'Pluie verglaçante forte',71:'Neige légère',73:'Neige',75:'Neige forte',77:'Grains de neige',80:'Averses légères',81:'Averses',82:'Averses violentes',85:'Averses de neige',86:'Averses de neige fortes',95:'Orage',96:'Orage et grêle',99:'Orage et grêle forte'};
+  function loadWeather(){if(!window.fetch)return;fetch('https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FToronto').then(function(r){return r.json()}).then(function(d){if(!d||!d.current)throw 0;var t=Math.round(d.current.temperature_2m);var label=WMO[d.current.weather_code]||'Météo';var w=$('#cmWeather');if(w)w.textContent='Montréal '+t+'°C · '+label;var st=$('#cmSvcTemp');if(st)st.textContent=t+'°C';var sd=$('#cmSvcWeatherDetail');if(sd){var mx=d.daily&&d.daily.temperature_2m_max?Math.round(d.daily.temperature_2m_max[0]):null;var mn=d.daily&&d.daily.temperature_2m_min?Math.round(d.daily.temperature_2m_min[0]):null;sd.textContent=label+' · Vent '+Math.round(d.current.wind_speed_10m)+' km/h'+(mx!==null?' · Max '+mx+'°C / Min '+mn+'°C':'')+' · Source : Open-Meteo';}}).catch(function(){var w=$('#cmWeather');if(w)w.textContent='Météo indisponible';var sd=$('#cmSvcWeatherDetail');if(sd)sd.textContent='Météo en direct momentanément indisponible.';});}
+  loadWeather();setInterval(loadWeather,1800000);
+
+  /* --- Index global des articles (aujourd'hui + archives + vedettes) --- */
+  function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function buildIndex(){
+    var idx=[],seen={};
+    function push(kind,key,id,title,summary,tag){
+      if(!title)return;var uid=kind+':'+(id||key||title);if(seen[uid])return;seen[uid]=1;
+      idx.push({kind:kind,key:key,id:id,title:title,summary:summary||'',tag:tag||'',hay:norm(title+' '+(summary||'')+' '+(tag||''))});
+    }
+    function cardData(card){
+      var h=card.querySelector('h3');var t=card.querySelector('.tag');var pEl=card.querySelector('p');
+      return {title:h?h.textContent.trim():'',tag:t?t.textContent.trim():'',summary:pEl?pEl.textContent.trim():''};
+    }
+    $$('#homeDailyGrid .today-card').forEach(function(card){var d=cardData(card);push('daily',null,card.getAttribute('data-daily'),d.title,d.summary,d.tag);});
+    $$('#archivesView .today-card').forEach(function(card){var d=cardData(card);push('archive',null,card.getAttribute('data-archive'),d.title,d.summary,d.tag);});
+    $$('[data-article]').forEach(function(el){var h=el.querySelector('h3');if(!h)return;var t=el.querySelector('.tag');push('feature',el.getAttribute('data-article'),null,h.textContent.trim(),'',t?t.textContent.trim():'');});
+    return idx;
+  }
+  var INDEX=buildIndex();
+
+  /* --- Ouvrir un article depuis l'index (via les cartes deja presentes) --- */
+  function openIndexed(entry){
+    var el=null;
+    if(entry.kind==='feature'){el=document.querySelector('[data-article="'+entry.key+'"]');}
+    else if(entry.kind==='daily'){el=document.querySelector('[data-daily="'+entry.id+'"]');}
+    else{el=document.querySelector('[data-archive="'+entry.id+'"]');}
+    if(el){el.click();return true;}
+    toast('Article introuvable dans cette édition');return false;
+  }
+
+  /* --- Recherche --- */
+  var overlay=$('#cmSearchOverlay'),input=$('#cmSearchInput'),results=$('#cmResults');
+  function renderResults(q){
+    q=norm(q).trim();
+    if(!q){results.innerHTML='<p class="cm-no">Tapez un mot : un pays, un nom, un sujet…</p>';return;}
+    var found=INDEX.filter(function(e){return e.hay.indexOf(q)!==-1}).slice(0,30);
+    if(!found.length){results.innerHTML='<p class="cm-no">Aucun article trouvé pour « '+q+' ».</p>';return;}
+    results.innerHTML=found.map(function(e,i){return '<button class="cm-result" data-ri="'+INDEX.indexOf(e)+'"><span class="r-tag">'+(e.kind==='archive'?'Archives':(e.kind==='feature'?'À la une':'Aujourd’hui'))+' · '+String(e.tag)+'</span><div class="r-title">'+e.title+'</div>'+(e.summary?'<div class="r-sum">'+e.summary.slice(0,140)+'…</div>':'')+'</button>';}).join('');
+    $$('.cm-result',results).forEach(function(b){b.addEventListener('click',function(){var e=INDEX[parseInt(b.getAttribute('data-ri'),10)];closeSearch();setTimeout(function(){openIndexed(e)},60);});});
+  }
+  function openSearch(){if(overlay){overlay.classList.add('open');setTimeout(function(){if(input)input.focus()},40);renderResults(input?input.value:'');}}
+  function closeSearch(){if(overlay)overlay.classList.remove('open');}
+  ['cmSearchBtn','cmSearchBtn2'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',openSearch);});
+  var sc=$('#cmSearchClose');if(sc)sc.addEventListener('click',closeSearch);
+  if(overlay)overlay.addEventListener('click',function(ev){if(ev.target===overlay)closeSearch();});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeSearch();if((ev.ctrlKey||ev.metaKey)&&String(ev.key).toLowerCase()==='k'){ev.preventDefault();openSearch();}});
+  if(input)input.addEventListener('input',function(){renderResults(input.value)});
+
+  /* --- Filtres rubriques (edition du jour) --- */
+  var filters=$('#cmFilters'),grid=$('#homeDailyGrid');
+  if(filters&&grid){
+    filters.addEventListener('click',function(ev){
+      var btn=ev.target.closest?ev.target.closest('.cm-pill'):null;if(!btn)return;
+      $$('.cm-pill',filters).forEach(function(p){p.classList.remove('active')});btn.classList.add('active');
+      var f=btn.getAttribute('data-filter'),visible=0;
+      $$('.today-card',grid).forEach(function(card){
+        var tagEl=card.querySelector('.tag');var tag=tagEl?tagEl.textContent.trim():'';
+        var show=(f==='all'||tag===f);card.style.display=show?'':'none';if(show)visible++;
+      });
+      var empty=$('#cmFilterEmpty');
+      if(!visible){if(!empty){empty=document.createElement('p');empty.id='cmFilterEmpty';empty.className='cm-empty';empty.textContent='Aucun article dans cette rubrique pour le moment.';grid.parentNode.appendChild(empty);}empty.style.display='';}
+      else if(empty){empty.style.display='none';}
+    });
+  }
+
+  /* --- Favoris (localStorage) --- */
+  var FKEY='cm-favorites';
+  function getFavs(){try{return JSON.parse(localStorage.getItem(FKEY)||'[]')}catch(e){return[]}}
+  function setFavs(f){try{localStorage.setItem(FKEY,JSON.stringify(f))}catch(e){}syncFavUI();}
+  function favId(e){return e.kind+':'+(e.id||e.key||e.title)}
+  function syncFavUI(){
+    var f=getFavs();var n=f.length;
+    ['cmFavCount','cmSvcFavCount'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=n;});
+    var list=$('#cmFavList');if(!list)return;
+    if(!n){list.innerHTML='<p class="cm-empty">Aucun favori pour le moment. Ouvrez un article et touchez « ☆ Favori » pour l’enregistrer ici.</p>';return;}
+    list.innerHTML=f.map(function(e,i){return '<div class="cm-fav-item" data-fi="'+i+'"><span class="tag">'+String(e.tag||'Article')+'</span><span class="t">'+e.title+'</span><button class="x" data-fx="'+i+'" aria-label="Retirer des favoris">✕</button></div>';}).join('');
+    $$('.cm-fav-item',list).forEach(function(item){
+      item.addEventListener('click',function(ev){
+        var x=ev.target.closest?ev.target.closest('[data-fx]'):null;var i=parseInt(item.getAttribute('data-fi'),10);
+        if(x){var f2=getFavs();f2.splice(i,1);setFavs(f2);toast('Retiré des favoris');return;}
+        var f3=getFavs();if(f3[i])openIndexed(f3[i]);
+      });
+    });
+    syncReaderFavBtn();
+  }
+  function scrollToFav(){var s=$('#cmFavoris');if(s)s.scrollIntoView({behavior:'smooth'});}
+  ['cmFavJump','cmSvcFavBtn'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',scrollToFav);});
+  var archBtn=$('#cmSvcArchives');if(archBtn)archBtn.addEventListener('click',function(){var b=document.querySelector('[data-category="archives"]');if(b)b.click();});
+
+  /* --- Outils lecteur : favori, partage, taille du texte --- */
+  var reader=$('#reader'),currentEntry=null,FSKEY='cm-fontsize',fsStep=0;
+  try{fsStep=parseInt(localStorage.getItem(FSKEY)||'0',10)||0}catch(e){}
+  function applyFs(){var body=$('#readerBody');if(body){body.style.fontSize=(100+fsStep*10)+'%';}}
+  function findByTitle(title){for(var i=0;i<INDEX.length;i++){if(INDEX[i].title===title)return INDEX[i];}return null;}
+  var tools=null,favBtn=null;
+  function ensureReaderTools(){
+    var bar=$('#reader .reader-bar .wrap');if(!bar||tools)return;
+    tools=document.createElement('div');tools.className='cm-reader-tools';
+    tools.innerHTML='<button id="cmFavBtn">☆ Favori</button><button id="cmShareBtn">Partager</button><button id="cmFsMinus" aria-label="Réduire le texte">A−</button><button id="cmFsPlus" aria-label="Agrandir le texte">A+</button>';
+    var close=$('#readerClose');bar.insertBefore(tools,close||null);
+    favBtn=$('#cmFavBtn');
+    favBtn.addEventListener('click',function(){
+      if(!currentEntry){var t=$('#readerTitle');currentEntry=t?findByTitle(t.textContent.trim()):null;}
+      if(!currentEntry){toast('Article non identifié');return;}
+      var f=getFavs(),id=favId(currentEntry),pos=-1;
+      f.forEach(function(e,i){if(favId(e)===id)pos=i;});
+      if(pos>=0){f.splice(pos,1);toast('Retiré des favoris');}else{f.unshift(currentEntry);toast('Ajouté aux favoris ⭐');}
+      setFavs(f);
+    });
+    $('#cmShareBtn').addEventListener('click',function(){
+      var t=$('#readerTitle');var title=t?t.textContent.trim():'Corlxns Media';var url=location.href;
+      if(navigator.share){navigator.share({title:title,text:title+' — Corlxns Media',url:url}).catch(function(){});}
+      else if(navigator.clipboard){navigator.clipboard.writeText(title+' — '+url).then(function(){toast('Lien copié !')});}
+      else{toast('Copiez le lien dans la barre d’adresse');}
+    });
+    $('#cmFsMinus').addEventListener('click',function(){if(fsStep>-2){fsStep--;try{localStorage.setItem(FSKEY,String(fsStep))}catch(e){}applyFs();}});
+    $('#cmFsPlus').addEventListener('click',function(){if(fsStep<3){fsStep++;try{localStorage.setItem(FSKEY,String(fsStep))}catch(e){}applyFs();}});
+  }
+  function syncReaderFavBtn(){
+    if(!favBtn)return;var t=$('#readerTitle');if(!t)return;var e=findByTitle(t.textContent.trim());currentEntry=e;
+    if(!e){favBtn.textContent='☆ Favori';favBtn.classList.remove('on');return;}
+    var id=favId(e),has=getFavs().some(function(x){return favId(x)===id});
+    favBtn.textContent=has?'★ Favori':'☆ Favori';favBtn.classList.toggle('on',has);
+  }
+  if(reader){
+    ensureReaderTools();applyFs();
+    new MutationObserver(function(){if(reader.classList.contains('open')){setTimeout(syncReaderFavBtn,80);}}).observe(reader,{attributes:true,attributeFilter:['class']});
+    /* --- Barre de progression de lecture --- */
+    var prog=$('#cmProgress');
+    reader.addEventListener('scroll',function(){if(!prog)return;var max=reader.scrollHeight-reader.clientHeight;prog.style.width=(max>0?Math.min(100,(reader.scrollTop/max)*100):0)+'%';});
+  }
+
+  /* --- Bouton retour en haut + progression page --- */
+  var topBtn=$('#cmTop'),prog2=$('#cmProgress');
+  window.addEventListener('scroll',function(){
+    if(topBtn)topBtn.classList.toggle('show',window.scrollY>650);
+    if(prog2&&!(reader&&reader.classList.contains('open'))){var max=document.documentElement.scrollHeight-window.innerHeight;prog2.style.width=(max>0?Math.min(100,(window.scrollY/max)*100):0)+'%';}
+  },{passive:true});
+  if(topBtn)topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* --- Compteur edition du jour --- */
+  var cnt=$('#cmSvcCount');if(cnt){var today=INDEX.filter(function(e){return e.kind==='daily'}).length;cnt.textContent=today||'—';}
+  syncFavUI();
+})();
+/*FIN CM-V2-SCRIPT*/</script>
+
 <div id="cm-install" role="dialog" aria-label="Installer l'application">
 <img src="data:image/jpeg;base64,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" alt="" onerror="this.style.display='none'">
 <div class="t"><b>Corlxns Media</b><span id="cm-install-msg">Installez l'application pour un accès rapide.</span></div>
