@@ -258,6 +258,7 @@
   .cm-hdr-btn:hover{border-color:var(--accent)}
   @media (max-width:900px){.cm-svc-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:560px){.cm-svc-grid{grid-template-columns:1fr}.cm-util .wrap{gap:10px}.cm-util-actions{margin-left:0}}
+  #cmCity{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
   /* ===== FIN CM-V2 ===== */
 </style>
 </head>
@@ -286,7 +287,7 @@
   </header>
   <!-- CM-V2 : barre utilitaire -->
   <div class="cm-util" aria-label="Informations pratiques"><div class="wrap">
-    <span>📍 <b>Montréal</b></span><span class="cm-dot">•</span><span id="cmClock">—</span><span class="cm-dot">•</span><span id="cmWeather">Météo…</span>
+    <span>📍 <b id="cmCity" title="Touchez pour utiliser votre position exacte">Montréal</b></span><span class="cm-dot">•</span><span id="cmClock">—</span><span class="cm-dot">•</span><span id="cmWeather">Météo…</span>
     <span class="cm-util-actions"><button class="cm-u-btn" id="cmFavJump">⭐ Mes favoris (<span id="cmFavCount">0</span>)</button><button class="cm-u-btn" id="cmSearchBtn2">🔍 Rechercher</button></span>
   </div></div>
 
@@ -325,8 +326,8 @@
       <h2 id="cmSvcTitle">Vos services Corlxns</h2>
       <p class="cm-sub">Nouveautés du site : l’essentiel pratique, en un coup d’œil, depuis Montréal.</p>
       <div class="cm-svc-grid">
-        <div class="cm-svc"><span class="cm-ico">🌦️</span><h3>Météo Montréal</h3><p class="cm-big" id="cmSvcTemp">—</p><p id="cmSvcWeatherDetail">Chargement de la météo en direct…</p></div>
-        <div class="cm-svc"><span class="cm-ico">🕐</span><h3>Heure locale</h3><p class="cm-big" id="cmSvcClock">—</p><p>Heure de Montréal (Québec), mise à jour en continu.</p></div>
+        <div class="cm-svc"><span class="cm-ico">🌦️</span><h3 id="cmSvcWeatherTitle">Météo Montréal</h3><p class="cm-big" id="cmSvcTemp">—</p><p id="cmSvcWeatherDetail">Chargement de la météo en direct…</p></div>
+        <div class="cm-svc"><span class="cm-ico">🕐</span><h3>Heure locale</h3><p class="cm-big" id="cmSvcClock">—</p><p id="cmSvcClockNote">Heure locale, mise à jour en continu.</p></div>
         <div class="cm-svc"><span class="cm-ico">📰</span><h3>Édition du jour</h3><p class="cm-big"><span id="cmSvcCount">—</span> articles</p><p>Plus les archives complètes des éditions précédentes, toujours consultables.</p><button id="cmSvcArchives">Voir les archives</button></div>
         <div class="cm-svc"><span class="cm-ico">⭐</span><h3>Mes favoris</h3><p class="cm-big"><span id="cmSvcFavCount">0</span> enregistré(s)</p><p>Gardez vos articles préférés sur cet appareil et retrouvez-les en un clic.</p><button id="cmSvcFavBtn">Ouvrir mes favoris</button></div>
       </div>
@@ -481,6 +482,10 @@
 (function(){
   "use strict";
   function mmDark(){try{return window.matchMedia('(prefers-color-scheme: dark)').matches}catch(e){return false}}
+  function cmTZ(){return (window.CM_LOC&&window.CM_LOC.tz)||'America/Toronto';}
+  function cmCityName(){return (window.CM_LOC&&window.CM_LOC.city)||'Montréal';}
+  function applyLocLabels(){var c=document.getElementById('cmCity');if(c)c.textContent=cmCityName();var t=document.getElementById('cmSvcWeatherTitle');if(t)t.textContent='Météo '+cmCityName();var n=document.getElementById('cmSvcClockNote');if(n)n.textContent='Heure de '+cmCityName()+', mise à jour en continu.';}
+  window.CM_RELOAD_LOC=function(){applyLocLabels();tickClock();loadWeather();};
   var $=function(s,c){return (c||document).querySelector(s)};
   var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   function toast(msg){var t=$('#toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2400);}
@@ -491,12 +496,12 @@
   if(themeBtn){themeBtn.addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme');var dark=cur==='dark'||(!cur&&mmDark());var next=dark?'light':'dark';document.documentElement.setAttribute('data-theme',next);try{localStorage.setItem('cm-theme',next)}catch(e){}syncThemeIcon();toast(next==='dark'?'Mode sombre activé':'Mode clair activé');});syncThemeIcon();}
 
   /* --- Horloge Montreal --- */
-  function tickClock(){try{var now=new Date();var dateStr=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'America/Toronto'});var timeStr=now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Toronto'});var c=$('#cmClock');if(c)c.textContent=dateStr.charAt(0).toUpperCase()+dateStr.slice(1)+' — '+timeStr;var sc=$('#cmSvcClock');if(sc)sc.textContent=timeStr;}catch(e){}}
+  function tickClock(){try{var now=new Date();var dateStr=now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:cmTZ()});var timeStr=now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:cmTZ()});var c=$('#cmClock');if(c)c.textContent=dateStr.charAt(0).toUpperCase()+dateStr.slice(1)+' — '+timeStr;var sc=$('#cmSvcClock');if(sc)sc.textContent=timeStr;}catch(e){}}
   tickClock();setInterval(tickClock,20000);
 
   /* --- Meteo Montreal (Open-Meteo, sans cle) --- */
   var WMO={0:'Ciel dégagé',1:'Plutôt dégagé',2:'Partiellement nuageux',3:'Couvert',45:'Brouillard',48:'Brouillard givrant',51:'Bruine légère',53:'Bruine',55:'Bruine forte',61:'Pluie légère',63:'Pluie',65:'Pluie forte',66:'Pluie verglaçante',67:'Pluie verglaçante forte',71:'Neige légère',73:'Neige',75:'Neige forte',77:'Grains de neige',80:'Averses légères',81:'Averses',82:'Averses violentes',85:'Averses de neige',86:'Averses de neige fortes',95:'Orage',96:'Orage et grêle',99:'Orage et grêle forte'};
-  function loadWeather(){if(!window.fetch)return;fetch('https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FToronto').then(function(r){return r.json()}).then(function(d){if(!d||!d.current)throw 0;var t=Math.round(d.current.temperature_2m);var label=WMO[d.current.weather_code]||'Météo';var w=$('#cmWeather');if(w)w.textContent='Montréal '+t+'°C · '+label;var st=$('#cmSvcTemp');if(st)st.textContent=t+'°C';var sd=$('#cmSvcWeatherDetail');if(sd){var mx=d.daily&&d.daily.temperature_2m_max?Math.round(d.daily.temperature_2m_max[0]):null;var mn=d.daily&&d.daily.temperature_2m_min?Math.round(d.daily.temperature_2m_min[0]):null;sd.textContent=label+' · Vent '+Math.round(d.current.wind_speed_10m)+' km/h'+(mx!==null?' · Max '+mx+'°C / Min '+mn+'°C':'')+' · Source : Open-Meteo';}}).catch(function(){var w=$('#cmWeather');if(w)w.textContent='Météo indisponible';var sd=$('#cmSvcWeatherDetail');if(sd)sd.textContent='Météo en direct momentanément indisponible.';});}
+  function loadWeather(){if(!window.fetch)return;var _L=window.CM_LOC||{};fetch('https://api.open-meteo.com/v1/forecast?latitude='+(_L.lat||45.5017)+'&longitude='+(_L.lon||-73.5673)+'&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone='+encodeURIComponent(cmTZ())).then(function(r){return r.json()}).then(function(d){if(!d||!d.current)throw 0;var t=Math.round(d.current.temperature_2m);var label=WMO[d.current.weather_code]||'Météo';var w=$('#cmWeather');if(w)w.textContent=cmCityName()+' '+t+'°C · '+label;var st=$('#cmSvcTemp');if(st)st.textContent=t+'°C';var sd=$('#cmSvcWeatherDetail');if(sd){var mx=d.daily&&d.daily.temperature_2m_max?Math.round(d.daily.temperature_2m_max[0]):null;var mn=d.daily&&d.daily.temperature_2m_min?Math.round(d.daily.temperature_2m_min[0]):null;sd.textContent=label+' · Vent '+Math.round(d.current.wind_speed_10m)+' km/h'+(mx!==null?' · Max '+mx+'°C / Min '+mn+'°C':'')+' · Source : Open-Meteo';}}).catch(function(){var w=$('#cmWeather');if(w)w.textContent='Météo indisponible';var sd=$('#cmSvcWeatherDetail');if(sd)sd.textContent='Météo en direct momentanément indisponible.';});}
   loadWeather();setInterval(loadWeather,1800000);
 
   /* --- Index global des articles (aujourd'hui + archives + vedettes) --- */
@@ -643,6 +648,38 @@
   syncFavUI();
 })();
 /*FIN CM-V2-SCRIPT*/</script>
+
+
+<script>/*CM-V21-GEO*/
+(function(){
+  "use strict";
+  function setLoc(loc,save){if(!loc||typeof loc.lat!=='number'||typeof loc.lon!=='number')return;window.CM_LOC={lat:loc.lat,lon:loc.lon,city:loc.city||'',tz:loc.tz||''};if(window.CM_RELOAD_LOC)window.CM_RELOAD_LOC();if(save!==false){try{localStorage.setItem('cm-loc',JSON.stringify(window.CM_LOC));}catch(e){}}}
+  try{var cached=JSON.parse(localStorage.getItem('cm-loc')||'null');if(cached&&typeof cached.lat==='number')setLoc(cached,false);}catch(e){}
+  function deviceTZ(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){return '';}}
+  if(window.fetch){
+    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(d){
+      if(d&&d.success!==false&&typeof d.latitude==='number'){setLoc({lat:d.latitude,lon:d.longitude,city:d.city||'',tz:(d.timezone&&d.timezone.id)||deviceTZ()});}
+      else{throw new Error('ipwho');}
+    }).catch(function(){
+      if(!window.fetch)return;
+      fetch('https://freeipapi.com/api/json/').then(function(r){return r.json();}).then(function(d){
+        if(d&&typeof d.latitude==='number'){setLoc({lat:d.latitude,lon:d.longitude,city:d.cityName||'',tz:deviceTZ()});}
+      }).catch(function(){});
+    });
+  }
+  var cityEl=document.getElementById('cmCity');
+  if(cityEl){cityEl.addEventListener('click',function(){
+    if(!navigator.geolocation)return;
+    cityEl.textContent='Localisation…';
+    navigator.geolocation.getCurrentPosition(function(pos){
+      var lat=pos.coords.latitude,lon=pos.coords.longitude;
+      var done=function(city){setLoc({lat:lat,lon:lon,city:city||(window.CM_LOC&&window.CM_LOC.city)||'',tz:deviceTZ()});};
+      if(window.fetch){fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+lat+'&longitude='+lon+'&localityLanguage=fr').then(function(r){return r.json();}).then(function(d){done(d.city||d.locality||'');}).catch(function(){done('');});}
+      else{done('');}
+    },function(){if(window.CM_RELOAD_LOC)window.CM_RELOAD_LOC();},{timeout:8000,maximumAge:600000});
+  });}
+})();
+/*FIN CM-V21-GEO*/</script>
 
 <div id="cm-install" role="dialog" aria-label="Installer l'application">
 <img src="data:image/jpeg;base64,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" alt="" onerror="this.style.display='none'">
